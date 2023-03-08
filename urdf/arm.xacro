@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find arm_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find arm_description)/urdf/arm.trans" />
+  <xacro:include filename="$(find arm_description)/urdf/arm.gazebo" />
+
+  <!-- World link -->
+  <link name="world"></link>
+
+  <!-- base_link -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="5" />
+      <inertia ixx="0.5" iyy="0.5" izz="0.5" ixy="0.0" iyz="0.0" ixz="-0.0" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.6" length="1" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.61" length="1" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!-- Link A -->
+  <link name="link_A">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="2.1" />
+      <inertia ixx="2.98" iyy="2.979" izz="5.854" ixy="0.0" iyz="0.0" ixz="-0.0" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link B -->
+  <link name="link_B">
+    <inertial>
+      <origin xyz="-0.05 0 0.375" rpy="0 0 0" />
+      <mass value="1.4" />
+      <inertia ixx="0.99" iyy="0.95" izz="0.06" ixy="0.0" iyz="0.0" ixz="-0.0" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0.05 0 -0.3" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_A_1.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+
+    <collision>
+      <origin xyz="0.05 -0.0 -0.3" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_A_1.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link C -->
+  <link name="link_C">
+    <inertial>
+      <origin xyz="0.05 0 0.375" rpy="0 0 0" />
+      <mass value="1.4" />
+      <inertia ixx="0.99" iyy="0.95" izz="0.06" ixy="0.0" iyz="-0.0" ixz="0.0" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0.05 -0.0 -1.05" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_B_1.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+
+    <collision>
+      <origin xyz="0.05 0.0 -1.05" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_B_1.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link D -->
+  <link name="end_effector">
+    <inertial>
+      <origin xyz="-0.1 0 0.25" rpy="0 0 0" />
+      <mass value="1.4" />
+      <inertia ixx="0.99" iyy="0.95" izz="0.06" ixy="0.0" iyz="-0.0" ixz="0.0" />
+    </inertial>
+
+    <visual>
+      <origin xyz="-0.1 0.0 0.25" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/end_effector.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+
+    <collision>
+      <origin xyz="-0.1 0.0 0.25" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://arm_description/meshes/end_effector.stl" scale="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joining base to world -->
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0.5" rpy="0 0 0" />
+    <parent link="world" />
+    <child link="base_link" />
+  </joint>
+
+  <!-- Joining link A to base -->
+  <joint name="Rev1" type="continuous">
+    <origin xyz="0 0 1" rpy="0 0 0" />
+    <parent link="world" />
+    <child link="link_A" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+  <!-- Joining link B to link A -->
+  <joint name="Rev2" type="continuous">
+    <origin xyz="-0.05 0.0 0.3" rpy="0 0 0" />
+    <parent link="link_A" />
+    <child link="link_B" />
+    <axis xyz="1.0 0.0 0.0" />
+  </joint>
+
+  <!-- Joining link C to link B -->
+  <joint name="Rev3" type="continuous">
+    <origin xyz="0.0 0.0 0.75" rpy="0 0 0" />
+    <parent link="link_B" />
+    <child link="link_C" />
+    <axis xyz="1.0 0.0 0.0" />
+  </joint>
+
+  <!-- Joining link D to link C -->
+  <joint name="Rev4" type="continuous">
+    <origin xyz="0.0 0.0 0.75" rpy="0 0 0" />
+    <parent link="link_C" />
+    <child link="end_effector" />
+    <axis xyz="1.0 0.0 0.0" />
+  </joint>
+
+
+</robot>

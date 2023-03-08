@@ -1,0 +1,48 @@
+#directly telelports to that position
+# joint_1_controller:
+#   type: "position_controllers/JointPositionController"
+#   joint: Rev1
+
+# joint_2_controller:
+#   type: "position_controllers/JointPositionController"
+#   joint: Rev2
+
+# joint_3_controller:
+#   type: "position_controllers/JointPositionController"
+#   joint: Rev3
+
+#emulation of motor with pid controller
+# joint_1_controller:
+#   type: "effort_controllers/JointPositionController"
+#   joint: Rev1
+#   pid: { p: 25.0, i: 0.01, d: 50 }
+
+# joint_2_controller:
+#   type: "effort_controllers/JointPositionController"
+#   joint: Rev2
+#   pid: { p: 25, i: 0.01, d: 50 }
+
+# joint_3_controller:
+#   type: "effort_controllers/JointPositionController"
+#   joint: Rev3
+#   pid: { p: 25, i: 0.01, d: 50 }
+
+#control using jointTrajectaryControl
+arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - Rev1
+    - Rev2
+    - Rev3
+    - Rev4
+  constraints:
+          goal_time: 0.6
+          stopped_velocity_tolerance: 0.05
+          joint1: {trajectory: 0.1, goal: 0.1}
+          joint2: {trajectory: 0.1, goal: 0.1}
+          joint3: {trajectory: 0.1, goal: 0.1}
+          joint4: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+  

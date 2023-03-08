@@ -1,0 +1,39 @@
+<launch>
+
+
+  <!-- Gazebo -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro $(find arm_description)/urdf/arm.xacro" />
+
+  <!-- <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" /> -->
+
+    <arg name="world"
+    default="$(find arm_description)/world/my_world.world" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world)" />
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="false" />
+    <arg name="use_sim_time" value="true" />
+  </include>
+
+  <node name="spawn_urdf" pkg="gazebo_ros"
+    type="spawn_model"
+    args="-param robot_description -urdf -model arm" />
+
+
+  <node name="robot_state_publisher"
+    pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <rosparam
+    file="$(find arm_description)/config/controller.yaml" />
+
+  <node name="controller_spawner"
+    pkg="controller_manager" type="spawner"
+    args="arm_controller" />
+
+
+
+</launch>

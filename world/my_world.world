@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<sdf version="1.5">
+	<world name="default">
+		<!-- A global light source -->
+		<include>
+			<uri>model://sun</uri>
+		</include>
+
+		<!-- A ground plane -->
+		<include>
+			<uri>model://ground_plane</uri>
+		</include>
+
+		<!-- A table -->
+		<include>
+			<uri>model://table</uri>
+			<pose>0 -1.05 0 0 0 0</pose>
+			<static>true</static>
+		</include>
+
+		<!-- A Box -->
+		<include>
+			<uri>model://cardboard_box</uri>
+			<pose>0 -1.05 1.2 0 0 0</pose>
+			<static>false</static>
+		</include>
+
+		<!-- A Reference Grid -->
+		<include>
+			<uri>model://checkerboard_plane</uri>
+			<pose>-1.5 -1 2.3 0 1.57 0</pose>
+			<scale>4 4 4</scale>
+		</include>
+
+		<gui>
+			<camera name="user_camera">
+				<projection_type>orthographic</projection_type>
+				<pose>0 0 0 0 0 3.14</pose>
+			</camera>
+		</gui>
+
+
+	</world>
+</sdf>

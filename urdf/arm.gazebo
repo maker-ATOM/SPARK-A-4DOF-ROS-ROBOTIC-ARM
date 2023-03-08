@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="body_color" value="Gazebo/Silver" />
+
+  <gazebo>
+    <plugin name="control" filename="libgazebo_ros_control.so" />
+  </gazebo>
+  
+  <gazebo reference="base_link">
+    <material>${body_color}</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <gravity>true</gravity>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <gazebo reference="link_A">
+    <material>${body_color}</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="link_B">
+    <material>${body_color}</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <gazebo reference="link_C">
+    <material>${body_color}</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Turquoise</material>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="end_effector">
+    <material>${body_color}</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Blue</material>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+</robot>
