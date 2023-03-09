@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find arm_description)/urdf/materials.xacro" />
-  <xacro:include filename="$(find arm_description)/urdf/arm.trans" />
-  <xacro:include filename="$(find arm_description)/urdf/arm.gazebo" />
+  <xacro:include filename="$(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/urdf/materials.xacro" />
+  <xacro:include filename="$(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/urdf/arm.trans" />
+  <xacro:include filename="$(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/urdf/arm.gazebo" />
 
   <!-- World link -->
   <link name="world"></link>
@@ -44,7 +44,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/base_link.stl" scale="0.01 0.01 0.01" />
       </geometry>
       <material name="silver" />
     </visual>
@@ -52,7 +52,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/base_link.stl" scale="0.01 0.01 0.01" />
       </geometry>
     </collision>
   </link>
@@ -68,7 +68,7 @@
     <visual>
       <origin xyz="0.05 0 -0.3" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/Link_A_1.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/Link_A_1.stl" scale="0.01 0.01 0.01" />
       </geometry>
       <material name="silver" />
     </visual>
@@ -76,7 +76,7 @@
     <collision>
       <origin xyz="0.05 -0.0 -0.3" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/Link_A_1.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/Link_A_1.stl" scale="0.01 0.01 0.01" />
       </geometry>
     </collision>
   </link>
@@ -92,7 +92,7 @@
     <visual>
       <origin xyz="0.05 -0.0 -1.05" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/Link_B_1.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/Link_B_1.stl" scale="0.01 0.01 0.01" />
       </geometry>
       <material name="silver" />
     </visual>
@@ -100,7 +100,7 @@
     <collision>
       <origin xyz="0.05 0.0 -1.05" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/Link_B_1.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/Link_B_1.stl" scale="0.01 0.01 0.01" />
       </geometry>
     </collision>
   </link>
@@ -116,7 +116,7 @@
     <visual>
       <origin xyz="-0.1 0.0 0.25" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/end_effector.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/end_effector.stl" scale="0.01 0.01 0.01" />
       </geometry>
       <material name="silver" />
     </visual>
@@ -124,7 +124,7 @@
     <collision>
       <origin xyz="-0.1 0.0 0.25" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://arm_description/meshes/end_effector.stl" scale="0.01 0.01 0.01" />
+        <mesh filename="package://SPARK-A-4DOF-ROS-ROBOTIC-ARM/meshes/end_effector.stl" scale="0.01 0.01 0.01" />
       </geometry>
     </collision>
   </link>

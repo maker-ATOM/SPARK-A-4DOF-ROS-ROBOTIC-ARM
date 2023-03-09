@@ -3,13 +3,13 @@
 
   <!-- Gazebo -->
   <param name="robot_description"
-    command="$(find xacro)/xacro $(find arm_description)/urdf/arm.xacro" />
+    command="$(find xacro)/xacro $(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/urdf/arm.xacro" />
 
   <!-- <include
     file="$(find gazebo_ros)/launch/empty_world.launch" /> -->
 
     <arg name="world"
-    default="$(find arm_description)/world/my_world.world" />
+    default="$(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/world/my_world.world" />
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world)" />
@@ -28,7 +28,7 @@
     pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <rosparam
-    file="$(find arm_description)/config/controller.yaml" />
+    file="$(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/config/controller.yaml" />
 
   <node name="controller_spawner"
     pkg="controller_manager" type="spawner"

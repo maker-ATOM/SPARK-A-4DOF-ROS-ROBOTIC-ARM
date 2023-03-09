@@ -1,7 +1,7 @@
 <launch>
-  <arg name="model" default="$(find arm_description)/urdf/arm.xacro"/>
+  <arg name="model" default="$(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/urdf/arm.xacro"/>
   <arg name="gui" default="true"/>
-  <arg name="rvizconfig" default="$(find arm_description)/launch/urdf.rviz"/>
+  <arg name="rvizconfig" default="$(find SPARK-A-4DOF-ROS-ROBOTIC-ARM)/launch/urdf.rviz"/>
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
   <param name="use_gui" value="$(arg gui)"/>
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
