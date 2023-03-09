@@ -141,7 +141,8 @@ This program instructs the end effector of the robotic arm to traverse over a sq
 
 ## Project Upgradation
 
-- To develop an IK solution for 4 DOF giving the arm the flexibility to reach any point in 3D space.
+- Add a python/ ROS GUI slider to update individual IK_DOF3 parameters [x,y,phi], providing a visual feedback for the movement in Gazebo.
+- To develop an IK solution for 4 DOF giving arm the flexibility to reach any point in 3D space.
 - To create an algorithm that can command the robotic arm to move in a straight path, irrespective of the location of the points.
 - To generate an alternative quadratic path if a point on the linear path cannot be reached.
 - Replace the 3D model of the arm with a 3D printable robot to to integrate ROS platform with a physical robot.
