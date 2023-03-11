@@ -114,7 +114,7 @@ rosrun SPARK-A-4DOF-ROS-ROBOTIC-ARM FK.py q` q0 q1 q2
 ```
 Keeping q` = 0 restrains the arm movement in xy plane.
 
-![FK](/images/fk.png)
+![FK](/images/FK.gif)
 
 
 - IK_DOF2
@@ -123,14 +123,14 @@ The exclusion of Link D as a component of the robotic arm reduces the degrees of
 ```
 rosrun SPARK-A-4DOF-ROS-ROBOTIC-ARM IK_DOF2.py x y
 ```
-![IK_DOF2](/images/IK_DOF2.png)
+![IK_DOF2](/images/IK_DOF2.gif)
 
 - IK_DOF3
 This program accepts three parameters, namely [x, y, ϕ]. The values of x and y define the position to which the end-effector must move, while ϕ indicates the configuration that the robotic arm should attain upon reaching these points.
 ```
 rosrun SPARK-A-4DOF-ROS-ROBOTIC-ARM IK_DOF3.py x y ϕ
 ```
-![IK_DOF3](/images/IK_DOF3.png)
+![IK_DOF3](/images/IK_DOF3.gif)
 
 - Square
 This program instructs the end effector of the robotic arm to traverse over a square. A list containing the vertices of the square is stored, and based on the location of the vertices, it can be concluded that the sides are parallel to the axes. Thus, when following the path, only a single parameter (either x or y) will change. The corresponding variable is incremented, and the arm is commanded to reach that point.
